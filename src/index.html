@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <meta
+      name="description"
+      content="Arrange a print-ready PDF into duplex sheets for folding and binding. All processing stays on your device."
+    />
+    <link rel="icon" href="data:," />
+    <title>BookletFold · Folded PDF booklets</title>
+    <style>
+      /* STYLES */
+    </style>
+  </head>
+  <body>
+    <header class="mast wrap">
+      <div class="brand"><span class="book" aria-hidden="true"></span>BookletFold</div>
+      <a href="https://github.com/sutinah12-hash/bookletfold">GitHub ↗</a>
+    </header>
+    <main class="wrap">
+      <section class="intro">
+        <div>
+          <h1>Print a folded booklet.</h1>
+          <p class="lede">
+            Arrange a PDF into sheets that read in order when printed, nested and folded.
+          </p>
+        </div>
+        <div class="actions">
+          <button id="choose" class="primary">Open a PDF</button
+          ><button id="load-example" class="btn">Load print example</button>
+        </div>
+        <input id="file" type="file" accept=".pdf,application/pdf" hidden />
+      </section>
+      <p class="notice" id="notice" role="status" hidden></p>
+      <div class="bench">
+        <fieldset id="options">
+          <legend>Print setup</legend>
+          <label class="field"
+            >Sheet size<select id="paper">
+              <option value="A4">A4 · 297 × 210 mm</option>
+              <option value="Letter">US Letter · 11 × 8.5 in</option>
+            </select></label
+          >
+          <label class="field"
+            >Binding edge<select id="binding">
+              <option value="left">Left edge</option>
+              <option value="right">Right edge</option>
+            </select></label
+          >
+          <label class="field"
+            >Sheets per signature<select id="maxSheets">
+              <option value="0">Keep all sheets together</option>
+              <option value="1">1 sheet · 4 pages</option>
+              <option value="2">2 sheets · 8 pages</option>
+              <option value="4">4 sheets · 16 pages</option>
+              <option value="8">8 sheets · 32 pages</option>
+            </select></label
+          >
+          <p class="small">
+            A signature is one group of sheets folded together. Smaller groups are easier to bind in
+            thick booklets.
+          </p>
+          <label class="field"
+            >Margin inside each half (mm)<input
+              id="margin"
+              type="number"
+              min="0"
+              max="30"
+              step="0.5"
+              value="5"
+          /></label>
+        </fieldset>
+        <section class="map" aria-labelledby="file-name">
+          <p class="kicker">Sheet map</p>
+          <h2 id="file-name">Loading example…</h2>
+          <p id="stats" class="small"></p>
+          <div id="map-body" hidden>
+            <div class="sides">
+              <div>
+                <h3>Front</h3>
+                <div id="front" class="spread"></div>
+              </div>
+              <div>
+                <h3>Back</h3>
+                <div id="back" class="spread"></div>
+              </div>
+            </div>
+            <div class="pager">
+              <button id="prev" class="btn">← Previous</button
+              ><span id="position" aria-live="polite"></span
+              ><button id="next" class="btn">Next →</button>
+            </div>
+          </div>
+          <div class="export">
+            <button id="export" class="primary" disabled>Download booklet PDF</button>
+            <p id="physical" class="small"></p>
+          </div>
+        </section>
+      </div>
+      <section class="print-note">
+        <h2>At the printer</h2>
+        <p>
+          Print the exported PDF at <strong>actual size</strong>, in <strong>landscape</strong>,
+          with <strong>double-sided, short-edge flipping</strong>. Choose one PDF page per printed
+          side. Nest the sheets of each signature in order and fold along the center.
+        </p>
+      </section>
+    </main>
+    <noscript>Enable JavaScript to use this offline tool.</noscript>
+    <script type="text/plain" id="licenses">
+      /* LICENSES */
+    </script>
+    <script>
+      /* APP */
+    </script>
+  </body>
+</html>
